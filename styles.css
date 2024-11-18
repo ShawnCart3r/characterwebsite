@@ -122,7 +122,7 @@ nav ul li a:hover {
 }
 
 /* Card Layout */
-/* General Card Styles */
+/* Card Container */
 .card-container {
     display: flex;
     gap: 20px;
@@ -130,13 +130,15 @@ nav ul li a:hover {
     width: 100%;
     justify-content: center;
     margin-top: 80px;
-    flex-wrap: wrap; /* Wrap cards on smaller screens */
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
 }
 
+/* Card Wrapper */
 .card-wrapper {
     text-align: center;
-    width: 90%; /* Make cards take almost full width on mobile */
-    max-width: 100%; /* Ensure no overflow on smaller screens */
+    width: 100%; /* Allow card to span full width on mobile */
+    max-width: 350px; /* Limit the width for better visibility */
+    margin: 0 auto; /* Center the card */
 }
 
 /* Card */
@@ -144,11 +146,12 @@ nav ul li a:hover {
     position: relative;
     perspective: 1000px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .card-inner {
     width: 100%;
-    height: auto; /* Allow height to adjust dynamically for mobile */
+    height: auto; /* Ensure dynamic height */
     transform-style: preserve-3d;
     transition: transform 0.6s ease-in-out;
 }
@@ -170,7 +173,7 @@ nav ul li a:hover {
 .card-front img,
 .card-back img {
     width: 100%;
-    height: 100%;
+    height: auto; /* Maintain aspect ratio for images */
     object-fit: cover;
     border-radius: 10px;
 }
@@ -186,7 +189,7 @@ nav ul li a:hover {
 }
 
 .character-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #333;
     cursor: pointer;
@@ -198,7 +201,7 @@ nav ul li a:hover {
 
 /* Blurb */
 .character-blurb {
-    font-size: 16px;
+    font-size: 14px;
     color: #444;
     line-height: 1.8;
     margin-top: 10px;
@@ -219,20 +222,20 @@ nav ul li a:hover {
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .card-wrapper {
-        width: 100%; /* Cards take full width */
-        max-width: 100%; /* Avoid overflow */
+        width: 90%; /* Cards take most of the screen width */
+        margin-bottom: 30px;
     }
 
     .card-inner {
-        height: 450px; /* Ensure card height adjusts for readability */
+        height: auto; /* Allow cards to adjust their height dynamically */
     }
 
     .character-title {
-        font-size: 18px; /* Slightly smaller for mobile */
+        font-size: 16px; /* Slightly smaller for mobile */
     }
 
     .character-blurb {
-        font-size: 14px; /* Adjust font size for smaller screens */
+        font-size: 13px;
         padding: 10px;
     }
 }
@@ -245,24 +248,24 @@ nav ul li a:hover {
 
     .card-wrapper {
         width: 100%; /* Cards span full width */
-        margin-bottom: 20px; /* Add spacing between stacked cards */
+        max-width: 400px; /* Ensure cards remain readable */
     }
 
     .card-inner {
-        height: auto; /* Allow height to adjust dynamically */
+        height: auto; /* Dynamically adjust height */
     }
 
     .card-front img,
     .card-back img {
-        height: auto; /* Ensure images fit dynamically within the card */
+        height: auto; /* Ensure images fit dynamically */
     }
 
     .character-title {
-        font-size: 16px; /* Reduce title size for smaller screens */
+        font-size: 14px; /* Reduce title size for smaller screens */
     }
 
     .character-blurb {
-        font-size: 12px; /* Smaller font for mobile readability */
+        font-size: 12px; /* Make font size smaller for mobile */
         padding: 8px; /* Reduce padding */
     }
 }
