@@ -306,53 +306,82 @@ nav ul li a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Older iPads and Small Tablets */
     .card-wrapper {
-        width: 90%;
+        width: 90%; /* Narrow cards slightly */
     }
 
-    .card-inner {
-        padding-top: 140%; /* Adjust for smaller devices */
+    .card {
+        aspect-ratio: 2 / 3; /* Keep proportions consistent */
     }
 
     .character-title {
-        font-size: 18px;
+        font-size: 16px; /* Adjust font size for readability */
     }
 
-    .card-back {
-        font-size: 14px;
+    .character-blurb {
+        font-size: 13px; /* Smaller blurb size */
+        padding: 12px; /* Adjust padding */
     }
 }
 
 @media (max-width: 480px) {
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
+    /* Newer iPhones (iPhone 14, 13, 12) */
     .card-wrapper {
-        width: 100%;
+        width: 95%; /* Use most of the screen width */
+        margin: 15px auto; /* Add spacing between cards */
     }
 
-    .card-inner {
-        padding-top: 130%; /* Adjust for smaller screens */
+    .card {
+        aspect-ratio: 2 / 3; /* Maintain proportions */
     }
 
     .character-title {
-        font-size: 16px;
+        font-size: 15px; /* Slightly smaller title */
     }
 
-    .card-back {
-        font-size: 12px;
-        padding: 10px;
+    .character-blurb {
+        font-size: 12px; /* Compact font size for blurbs */
+        padding: 10px; /* Compact padding */
     }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 390px) {
+    /* iPhone 12 and Older */
     .card-wrapper {
-        width: 30%;
+        width: 100%; /* Full-width cards */
     }
 
-    .card-inner {
-        padding-top: 150%;
+    .card {
+        aspect-ratio: 2 / 3; /* Maintain consistent proportions */
+    }
+
+    .character-title {
+        font-size: 14px; /* Slightly smaller title font */
+    }
+
+    .character-blurb {
+        font-size: 11px; /* Compact font for blurbs */
+        padding: 8px; /* Compact padding */
+    }
+}
+
+@media (max-width: 320px) {
+    /* Oldest Devices (iPhone SE, iPhone 5) */
+    .card-wrapper {
+        width: 100%; /* Full width on smallest screens */
+    }
+
+    .card {
+        aspect-ratio: 2 / 3; /* Maintain proportions */
+    }
+
+    .character-title {
+        font-size: 13px; /* Tiny font for titles */
+    }
+
+    .character-blurb {
+        font-size: 10px; /* Compact font size for blurbs */
+        padding: 6px; /* Minimal padding */
     }
 }
