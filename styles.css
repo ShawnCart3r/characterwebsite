@@ -123,7 +123,21 @@ nav ul li a:hover {
 }
 
 /* Media Queries for Mobile Responsiveness */
-@media (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+    .rectangle {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .divider {
+        width: 100%;
+        height: 2px;
+    }
+
+    .image-container {
+        height: 500px;
+    }
+
     nav ul li {
         margin: 0 10px;
     }
@@ -131,29 +145,26 @@ nav ul li a:hover {
     nav ul li a {
         font-size: 16px;
     }
+}
 
-    .rectangle {
-        flex-direction: column; /* Stack the rectangles vertically */
-        height: auto;
-    }
-
-    .divider {
-        width: 100%;
-        height: 2px; /* Adjust divider to horizontal for stacking */
-    }
-
-    .left-side {
-        flex-direction: row; /* Reorganize small images side by side */
-        flex-wrap: wrap; /* Wrap small images on smaller screens */
-    }
-
+/* iPad Mini and iPhone 14/13 Pro Max */
+@media screen and (max-width: 834px) {
     .small-image-container {
-        flex: 1 1 50%; /* Make small images take 50% width on small screens */
-        height: 150px; /* Adjust height for smaller screens */
+        flex: 1 1 50%;
+        height: 200px;
+    }
+
+    .image-container {
+        height: 400px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
     }
 }
 
-@media (max-width: 480px) {
+/* iPhone 12 and earlier models */
+@media screen and (max-width: 480px) {
     nav ul li {
         margin: 0 5px;
     }
@@ -163,23 +174,20 @@ nav ul li a:hover {
     }
 
     .small-image-container {
-        flex: 1 1 100%; /* Make small images stack on very small screens */
-        height: 100px; /* Reduce height further for small screens */
+        flex: 1 1 100%;
+        height: 150px;
     }
 
     .rectangle {
-        height: auto; /* Allow rectangles to adjust height dynamically */
+        height: auto;
     }
 
     .image-container {
-        height: 300px; /* Adjust height for smaller images */
+        height: 300px;
     }
 }
 
-
-
 /* Card Layout */
-/* General Card Container for Responsiveness */
 .card-container {
     display: flex;
     gap: 20px;
@@ -305,6 +313,23 @@ nav ul li a:hover {
 
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    /* Newest iPads */
+    .card-wrapper {
+        width: 90%; /* Slightly narrower for tablets */
+        max-width: 350px; /* Keep max card size consistent */
+    }
+
+    .character-title {
+        font-size: 16px; /* Adjust title size for iPad screens */
+    }
+
+    .character-blurb {
+        font-size: 13px; /* Adjust blurb size for readability */
+        padding: 12px; /* Reduce padding slightly */
+    }
+}
+
 @media (max-width: 768px) {
     /* Older iPads and Small Tablets */
     .card-wrapper {
