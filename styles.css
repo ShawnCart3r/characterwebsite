@@ -5,10 +5,16 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Optional to emphasize images */
 }
+
+
 
 /* Navbar */
 nav {
@@ -43,129 +49,114 @@ nav ul li a:hover {
 }
 
 /* Main Page Sections */
-/* Main Page Sections */
 /* Remove default padding/margin for the body and container */
 .container {
     display: flex;
-    flex-direction: column; /* Stack everything vertically for responsiveness */
-    width: 100%;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
 }
 
 .rectangle {
     display: flex;
-    flex: 1;
+    flex: 1; /* Ensures each rectangle takes equal space */
     width: 100%;
-    height: 100vh; /* Full screen height for desktop */
-    position: relative;
-    overflow: hidden;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.divider {
-    width: 2px;
-    background-color: black;
-    height: 100%; /* Full height for desktop */
-}
-
-/* Image Container - Large Screens */
 .image-container {
-    flex: 1;
-    overflow: hidden;
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
+    flex: 1; /* Each image takes equal space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures images don't overflow */
+    position: relative; /* For hover effects */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+}
+
+.image-container:hover {
+    transform: scale(1.1); /* Makes the image pop */
+    filter: brightness(1.2); /* Adds a glossy effect */
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the image covers the container */
-    transition: transform 0.4s ease;
-}
-
-.image-container:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-    filter: brightness(1.2) saturate(1.3); /* Enhance brightness and saturation */
+    object-fit: cover; /* Ensures images cover their container without stretching */
+    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .image-container:hover img {
-    transform: scale(1.2); /* Further zoom effect on hover */
+    opacity: 0.9; /* Slightly reduces opacity for the glossy effect */
 }
 
-/* Small Image Containers */
-.small-image-container {
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Glossy overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Ensures the overlay doesn't interfere with clicks */
+}
+
+.image-container:hover::after {
+    opacity: 1; /* Makes the overlay visible on hover */
+}
+
+.divider {
+    width: 2px; /* Divider width */
+    background-color: black; /* Divider color */
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    overflow: hidden;
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
+}
+
+.small-image-container {
+    flex: 1; /* Equal height in the left-side column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents overflow */
+    position: relative; /* For hover effects */
 }
 
 .small-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.small-image-container:hover {
+.small-image-container:hover img {
     transform: scale(1.1);
-    filter: brightness(1.2) saturate(1.3);
+    filter: brightness(1.2);
 }
 
-.small-divider {
-    height: 2px;
-    background-color: black;
-    width: 100%; /* Full width for mobile */
+.small-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.small-image-container:hover::after {
+    opacity: 1;
 }
 
 
-/* Responsive Design */
 
-/* Tablets and Smaller Screens (Up to 768px) */
-@media (max-width: 768px) {
-    .rectangle {
-        flex-direction: column; /* Stack images vertically */
-        height: auto; /* Adjust content height */
-    }
-
-    .divider {
-        height: 2px; /* Horizontal divider */
-        width: 100%;
-    }
-
-    .image-container img {
-        max-height: 50vh; /* Limit image height to 50% of viewport */
-    }
-}
-
-/* Mobile Phones (Up to 480px) */
-@media (max-width: 480px) {
-    .image-container {
-        margin-bottom: 10px; /* Add spacing between images */
-    }
-
-    .divider {
-        display: none; /* Hide dividers for cleaner look */
-    }
-
-    .image-container img {
-        max-height: 40vh; /* Limit height for small screens */
-    }
-
-    .image-container:hover {
-        transform: none; /* Disable hover effects on touch devices */
-        filter: none;
-    }
-}
-
-}
-.card img {
-    width: 100%; /* Make the image fill the container */
-    max-width: 350px; /* Ensure the width matches Theresa’s image */
-    height: 500px; /* Set a fixed height */
-    object-fit: cover; /* Crop the image to fit the dimensions */
-    border-radius: 10px; /* Optional: Add consistent rounded corners */
-    display: block; /* Remove any inline gaps */
-}
 /* Card Layout */
 .card-container {
     display: flex;
@@ -347,3 +338,4 @@ nav ul li a:hover {
         height: auto;
     }
 }
+
