@@ -105,31 +105,32 @@ nav ul li a:hover {
 
 .card-container {
     display: flex;
-    flex-direction: column; /* Stack cards vertically on mobile */
+    flex-direction: column; /* Stack cards vertically for mobile */
     align-items: center;
     gap: 20px;
     padding: 20px;
-    margin-top: 60px; /* Space for navbar */
+    margin-top: 70px; /* Space for fixed navbar */
+    width: 100%;
 }
 
 /* Card Wrapper */
 .card-wrapper {
-    text-align: center;
-    width: 100%; /* Full width on mobile */
+    width: 100%; /* Allow card to span full width on mobile */
     max-width: 400px; /* Limit card width for readability */
     margin: 0 auto; /* Center the card */
+    text-align: center;
 }
 
 /* Card */
 .card {
     position: relative;
     perspective: 1000px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .card-inner {
     width: 100%;
-    height: auto; /* Allow height to scale dynamically */
+    height: auto; /* Adjust card height dynamically */
     transform-style: preserve-3d;
     transition: transform 0.6s ease-in-out;
 }
@@ -151,7 +152,7 @@ nav ul li a:hover {
 .card-front img,
 .card-back img {
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain proportions */
     object-fit: contain; /* Prevent cropping */
     border-radius: 10px;
 }
@@ -164,14 +165,13 @@ nav ul li a:hover {
 .card-text {
     margin-top: 15px;
     text-align: center;
+    padding: 0 15px;
 }
 
 .character-title {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
     margin-bottom: 10px;
-    text-align: center;
 }
 
 .character-title:hover {
@@ -188,34 +188,55 @@ nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: justify;
-    margin-top: 10px;
-    max-width: 90%; /* Scale blurb width for mobile screens */
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 90%; /* Scale blurb width for mobile */
+    margin: 10px auto; /* Center and separate the blurb */
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 480px) {
+/* Responsive Design */
+@media (max-width: 768px) {
     .card-wrapper {
-        max-width: 100%; /* Allow card to scale fully */
+        max-width: 90%; /* Adjust card width for tablets */
     }
 
     .card-inner {
-        height: auto; /* Let card height adjust dynamically */
+        height: auto;
+    }
+
+    .character-title {
+        font-size: 16px;
+    }
+
+    .character-blurb {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-wrapper {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .card-inner {
+        height: auto; /* Dynamic scaling for mobile */
     }
 
     .card-front img,
     .card-back img {
-        height: auto; /* Maintain proportional scaling */
+        height: auto; /* Maintain aspect ratio */
     }
 
     .character-title {
-        font-size: 16px; /* Slightly smaller font for mobile */
+        font-size: 14px;
     }
 
     .character-blurb {
-        font-size: 13px; /* Adjust font size for better readability */
-        padding: 10px;
+        font-size: 12px;
+        padding: 8px;
         line-height: 1.5; /* Slightly tighter line spacing */
     }
-}
