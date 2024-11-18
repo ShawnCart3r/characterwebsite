@@ -188,10 +188,16 @@ nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: justify;
-    max-width: 90%; /* Scale blurb for mobile */
-    margin: 10px auto; /* Center the blurb */
+    max-width: 90%;
+    margin: 10px auto;
+    display: none; /* Hidden by default */
+    transition: all 0.3s ease-in-out; /* Smooth transition for visibility */
 }
 
+/* Visible state for the blurb */
+.character-blurb.show {
+    display: block; /* Show the blurb when toggled */
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .card-wrapper {
