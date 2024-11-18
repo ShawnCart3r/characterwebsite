@@ -205,26 +205,31 @@ nav ul li a:hover {
     color: #f39c12;
 }
 
-.character-blurb {
-    display: none;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
-    padding: 15px;
-    font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    color: #333;
-    text-align: justify;
+.card-text {
+    text-align: center; /* Center-align text */
+    margin: 15px 0; /* Add vertical spacing */
 }
 
-.character-blurb.show {
-    display: block;
-    opacity: 1;
-    max-height: 300px;
+.character-title {
+    font-size: 18px; /* Responsive font size */
+    font-weight: bold;
+    color: #ff9800; /* Bright orange for the title */
+    margin-bottom: 10px; /* Add spacing below the title */
 }
+
+.character-blurb {
+    font-size: 16px; /* Larger font size for readability */
+    line-height: 1.6; /* Comfortable line spacing */
+    color: #333; /* Neutral text color */
+    text-align: justify; /* Align text neatly */
+    margin-top: 15px; /* Add space above the blurb */
+    padding: 20px; /* Add internal padding */
+    background-color: #fff; /* Clean white background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gentle shadow */
+}
+
 
 /* Responsive Design */
 @media (max-width: 1440px) {
