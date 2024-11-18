@@ -120,9 +120,9 @@ nav ul li a:hover {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    justify-content: center;
+    justify-content: space-evenly; /* Space items evenly */
+    align-items: flex-start; /* Align cards to the top */
     margin-top: 80px;
-    overflow: hidden;
 }
 
 .card-wrapper {
@@ -176,9 +176,21 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
+    padding: 0; /* Remove extra padding for better fit */
     color: #333;
     border-radius: 10px;
+    overflow: hidden; /* Ensure image stays within the boundaries */
+    position: relative; /* Position to handle the image correctly */
+    width: 100%; /* Match the card dimensions */
+    height: 100%; /* Match the card dimensions */
+}
+
+/* Image Inside Card Back */
+.card-back img {
+    width: 100%; /* Make the image fill the width of the card back */
+    height: 100%; /* Make the image fill the height of the card back */
+    object-fit: cover; /* Ensure the image scales proportionally */
+    border-radius: 10px; /* Match the card's rounded corners */
 }
 
 .character-title {
