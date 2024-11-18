@@ -182,107 +182,177 @@ nav ul li a:hover {
 /* General Card Container for Responsiveness */
 .card-container {
     display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
-    justify-content: center; /* Center cards horizontally */
-    padding: 10px; /* Reduce padding for small screens */
-    gap: 20px; /* Add space between cards */
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 80px;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    overflow: hidden; /* Prevent overflow issues */
 }
 
 /* Card Wrapper */
 .card-wrapper {
-    display: flex;
-    flex-direction: column; /* Stack card and text vertically */
-    align-items: center; /* Center card and text */
-    width: 100%; /* Full width on mobile */
-    max-width: 350px; /* Limit card size on larger devices */
-    margin: 0 auto; /* Center wrapper horizontally */
+    text-align: center;
+    width: 300px; /* Adjust width to image size */
+    max-width: 100%; /* Ensure it fits the screen width on mobile */
 }
 
 /* Card */
 .card {
-    width: 100%; /* Make card responsive */
-    max-width: 350px; /* Prevent oversized cards */
-    aspect-ratio: 2 / 3; /* Maintain image aspect ratio */
-    border-radius: 10px; /* Smooth corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add depth */
-    overflow: hidden; /* Prevent overflow issues */
+    position: relative;
+    perspective: 1000px; /* Enable 3D perspective for the flip effect */
+    margin-bottom: 20px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 150%; /* Maintain 2:3 aspect ratio (height = width * 1.5) */
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Flip card */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back side when flipped */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Front of the Card */
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fits properly */
+    border-radius: 10px;
+}
+
+/* Back of the Card */
+.card-back {
+    transform: rotateY(180deg); /* Ensure the back is flipped initially */
+    background-color: #f0f0f0; /* Example background for the back */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 10px;
 }
 
 /* Text Below Card */
 .card-text {
-    text-align: center; /* Center-align text */
-    margin-top: 15px; /* Space between card and text */
+    margin-top: 20px;
+    text-align: center;
 }
 
 /* Title */
 .character-title {
-    font-size: 16px; /* Adjust font size for mobile */
+    font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px; /* Space below the title */
-    color: #333; /* Neutral color for readability */
+    color: #333;
+    cursor: pointer;
 }
 
 .character-title:hover {
-    color: #0077cc; /* Optional hover effect */
+    color: #f39c12;
 }
-
-/* Blurb */
 .character-blurb {
-    font-size: 14px; /* Slightly smaller text for mobile */
-    line-height: 1.6; /* Comfortable line spacing */
-    color: #444; /* Neutral text color */
-    text-align: justify; /* Professional text alignment */
-    margin-top: 10px; /* Space above the blurb */
-    padding: 15px;
-    background-color: #f9f9f9; /* Light background for contrast */
-    border: 1px solid #ddd; /* Add a subtle border */
-    border-radius: 8px; /* Rounded corners for a clean look */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Gentle shadow */
-    max-width: 100%; /* Ensure blurb doesn’t overflow */
     display: none; /* Hidden by default */
-    opacity: 0;
-    transition: all 0.3s ease-in-out; /* Smooth toggle transition */
+    opacity: 0; /* Fully transparent */
+    max-height: 0; /* Collapse the space it takes */
+    overflow: hidden; /* Prevent content overflow */
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    padding: 15px; /* Add padding for better spacing */
+    font-size: 14px; /* Professional, legible font size */
+    line-height: 1.6; /* Improve readability */
+    background-color: #ffffff; /* Clean white background */
+    border: 1px solid #ddd; /* Subtle border for structure */
+    border-radius: 8px; /* Soft rounded corners */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-family: Arial, sans-serif; /* Clean, professional font */
+    color: #333; /* Neutral text color for readability */
+    text-align: justify; /* Align text for a clean block layout */
 }
 
 .character-blurb.show {
-    display: block; /* Make visible */
+    display: block; /* Make it visible */
     opacity: 1; /* Fully visible */
+    max-height: 300px; /* Adjust max-height based on content */
 }
 
-/* Mobile-Specific Adjustments */
+/* Optional: Add hover or active styles for better interactivity */
+.character-blurb:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+    background-color: #f9f9f9; /* Slightly darker background */
+}
+
+
+
+
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .card-wrapper {
-        width: 95%; /* Use most of the screen */
+        width: 90%;
     }
 
-    .card {
-        aspect-ratio: 2 / 3; /* Maintain ratio on smaller devices */
+    .card-inner {
+        padding-top: 140%; /* Adjust for smaller devices */
     }
 
     .character-title {
-        font-size: 15px; /* Slightly smaller title font */
+        font-size: 18px;
     }
 
-    .character-blurb {
-        font-size: 13px; /* Smaller text for compact screens */
-        padding: 10px;
+    .card-back {
+        font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .card-wrapper {
-        width: 100%; /* Full width on very small screens */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .card {
-        aspect-ratio: 2 / 3; /* Maintain correct ratio */
+    .card-wrapper {
+        width: 100%;
+    }
+
+    .card-inner {
+        padding-top: 130%; /* Adjust for smaller screens */
     }
 
     .character-title {
-        font-size: 14px; /* Smaller title font for compact devices */
+        font-size: 16px;
     }
 
-    .character-blurb {
-        font-size: 12px; /* Adjust blurb font size */
+    .card-back {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-wrapper {
+        width: 30%;
+    }
+
+    .card-inner {
+        padding-top: 150%;
     }
 }
