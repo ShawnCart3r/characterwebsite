@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Full-Screen Divided Rectangles</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            
+        </ul>
+    </nav>
+
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="" alt="Character 1 Front">
+                    </div>
+                    <div class="card-back">
+                        <img src="" alt="Character 1 Back">
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <h3 class="character-title" onclick="toggleBlurb(this)">Character 1</h3>
+                <p class="character-blurb" >This is a detailed description of Character 1, explaining their background, traits, and more. Learn more <a href=""> read here..</a></p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="" alt="Character 2 Front">
+                    </div>
+                    <div class="card-back">
+                        <img src="" alt="Character 2 Back">
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <h3 class="character-title" onclick="toggleBlurb(this)">Character 2</h3>
+                <p class="character-blurb" >This is a detailed description of Character 1, explaining their background, traits, and more. Learn more <a href=""> read here..</a></p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://via.placeholder.com/300x450" alt="Character 3 Front">
+                    </div>
+                    <div class="card-back">
+                        <img src="https://via.placeholder.com/300x450/000000/FFFFFF?text=Character+3+Back" alt="Character 3 Back">
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <h3 class="character-title" onclick="toggleBlurb(this)">Character 3</h3>
+                <p class="character-blurb" >This is a detailed description of Character 1, explaining their background, traits, and more. Learn more <a href=""> read here..</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

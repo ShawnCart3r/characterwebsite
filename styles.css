@@ -1,0 +1,268 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f39c12;
+}
+
+/* Full-Screen Rectangle Sections */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.rectangle {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Divider */
+.divider {
+    width: 2px;
+    background-color: black;
+    height: 100%;
+}
+
+/* Image Containers */
+.image-container {
+    flex: 1;
+    overflow: hidden;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Left Side of Third Rectangle */
+.left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.small-image-container {
+    flex: 1;
+    overflow: hidden;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+}
+
+.small-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Small Divider */
+.small-divider {
+    height: 2px;
+    background-color: black;
+    width: 100%;
+}
+
+/* Hover Effect */
+.image-container:hover,
+.small-image-container:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) saturate(1.3);
+}
+
+.image-container:hover img,
+.small-image-container:hover img {
+    transform: scale(1.2);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .rectangle {
+        flex-direction: column;
+    }
+
+    .divider {
+        width: 100%;
+        height: 2px;
+    }
+
+    .left-side {
+        flex-direction: row;
+    }
+
+    .small-divider {
+        width: 2px;
+        height: 100%;
+    }
+}
+
+/* card for mtg and art */
+/* Reset */
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 80px;
+    flex-wrap: wrap;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+    text-align: center;
+    width: 300px;
+}
+
+/* Card */
+.card {
+    position: relative;
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 450px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    position: relative;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-front img,
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-text {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Title */
+.character-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.character-title:hover {
+    color: #f39c12; /* Highlight on hover */
+}
+
+/* Blurb (Hidden State) */
+.character-blurb {
+    font-size: 16px; /* Adjusted font size for readability */
+    color: #444; /* Slightly darker color for better contrast */
+    line-height: 1.8; /* Increased line height for better spacing */
+    margin-top: 10px;
+    padding: 15px; /* Add padding for breathing space */
+    background-color: #f0f0f0; /* Light gray background for visibility */
+    border: 1px solid #ccc; /* Subtle border to define the box */
+    border-radius: 10px; /* Rounded corners for a soft look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: left; /* Align text to the left for a clean structure */
+    display: none; /* Hidden by default */
+    transition: all 0.3s ease-in-out; /* Smooth transition for animations */
+}
+
+/* Blurb (Visible State) */
+.character-blurb.show {
+    display: block; /* Make visible */
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Reset position */
+}
+
+/* Blurb Visible */
+.character-blurb.show {
+    display: block;
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Reset position */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .card-wrapper {
+        width: 90%; /* Full width on smaller screens */
+    }
+
+    .character-title {
+        font-size: 18px;
+    }
+
+    .character-blurb {
+        font-size: 14px;
+    }
+}
