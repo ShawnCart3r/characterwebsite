@@ -230,6 +230,16 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gentle shadow */
 }
 
+.character-blurb {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.character-blurb.show {
+    display: block;
+    opacity: 1;
+}
 
 /* Responsive Design */
 @media (max-width: 1440px) {
