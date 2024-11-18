@@ -122,7 +122,6 @@ nav ul li a:hover {
 }
 
 /* Card Layout */
-/* Card Container */
 .card-container {
     display: flex;
     gap: 20px;
@@ -136,9 +135,8 @@ nav ul li a:hover {
 /* Card Wrapper */
 .card-wrapper {
     text-align: center;
-    width: 100%; /* Allow card to span full width on mobile */
-    max-width: 350px; /* Limit the width for better visibility */
-    margin: 0 auto; /* Center the card */
+    width: 350px; /* Increased card width */
+    max-width: 100%; /* Ensure it fits the screen width on mobile */
 }
 
 /* Card */
@@ -146,12 +144,11 @@ nav ul li a:hover {
     position: relative;
     perspective: 1000px;
     margin-bottom: 20px;
-    width: 100%;
 }
 
 .card-inner {
     width: 100%;
-    height: auto; /* Ensure dynamic height */
+    height: 500px; /* Increased card height */
     transform-style: preserve-3d;
     transition: transform 0.6s ease-in-out;
 }
@@ -173,7 +170,7 @@ nav ul li a:hover {
 .card-front img,
 .card-back img {
     width: 100%;
-    height: auto; /* Maintain aspect ratio for images */
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -188,8 +185,9 @@ nav ul li a:hover {
     text-align: center;
 }
 
+/* Title */
 .character-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
     cursor: pointer;
@@ -201,7 +199,7 @@ nav ul li a:hover {
 
 /* Blurb */
 .character-blurb {
-    font-size: 14px;
+    font-size: 16px;
     color: #444;
     line-height: 1.8;
     margin-top: 10px;
@@ -219,53 +217,46 @@ nav ul li a:hover {
     display: block;
 }
 
-/* Responsive Design for Mobile */
+/* Responsive Design */
 @media (max-width: 768px) {
     .card-wrapper {
         width: 90%; /* Cards take most of the screen width */
-        margin-bottom: 30px;
     }
 
     .card-inner {
-        height: auto; /* Allow cards to adjust their height dynamically */
+        height: 450px; /* Adjust card height for tablets */
     }
 
     .character-title {
-        font-size: 16px; /* Slightly smaller for mobile */
+        font-size: 18px;
     }
 
     .character-blurb {
-        font-size: 13px;
+        font-size: 14px;
         padding: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .card-container {
-        flex-direction: column; /* Stack cards vertically */
+        flex-direction: column;
         align-items: center;
     }
 
     .card-wrapper {
         width: 100%; /* Cards span full width */
-        max-width: 400px; /* Ensure cards remain readable */
     }
 
     .card-inner {
-        height: auto; /* Dynamically adjust height */
-    }
-
-    .card-front img,
-    .card-back img {
-        height: auto; /* Ensure images fit dynamically */
+        height: 400px; /* Adjust card height for smaller screens */
     }
 
     .character-title {
-        font-size: 14px; /* Reduce title size for smaller screens */
+        font-size: 16px;
     }
 
     .character-blurb {
-        font-size: 12px; /* Make font size smaller for mobile */
-        padding: 8px; /* Reduce padding */
+        font-size: 12px;
+        padding: 8px;
     }
 }
