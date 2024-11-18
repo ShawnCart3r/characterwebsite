@@ -113,7 +113,14 @@ nav ul li a:hover {
     background-color: black;
     width: 100%;
 }
-
+.card img {
+    width: 100%; /* Make the image fill the container */
+    max-width: 350px; /* Ensure the width matches Theresa’s image */
+    height: 500px; /* Set a fixed height */
+    object-fit: cover; /* Crop the image to fit the dimensions */
+    border-radius: 10px; /* Optional: Add consistent rounded corners */
+    display: block; /* Remove any inline gaps */
+}
 /* Card Layout */
 .card-container {
     display: flex;
