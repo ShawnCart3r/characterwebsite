@@ -120,58 +120,40 @@ nav ul li a:hover {
 /* Tablets and Smaller Screens (Up to 768px) */
 @media (max-width: 768px) {
     .rectangle {
-        height: auto; /* Remove full viewport height */
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column; /* Stack images vertically */
+        height: auto; /* Adjust content height */
     }
 
     .divider {
-        width: 100%; /* Full-width horizontal divider */
-        height: 2px; /* Horizontal divider instead of vertical */
+        height: 2px; /* Horizontal divider */
+        width: 100%;
     }
 
-    .image-container,
-    .small-image-container {
-        flex: none; /* Disable flex resizing */
-        width: 100%; /* Full-width containers */
-        height: auto; /* Maintain image proportions */
-    }
-
-    .image-container img,
-    .small-image-container img {
-        width: 100%; /* Full-width images */
-        height: auto; /* Maintain aspect ratio */
+    .image-container img {
+        max-height: 50vh; /* Limit image height to 50% of viewport */
     }
 }
 
 /* Mobile Phones (Up to 480px) */
 @media (max-width: 480px) {
-    .rectangle {
-        flex-direction: column; /* Stack elements vertically */
-        height: auto; /* Allow content height to adjust */
-    }
-
-    .divider,
-    .small-divider {
-        display: none; /* Remove dividers on small screens */
-    }
-
-    .image-container,
-    .small-image-container {
-        width: 100%; /* Full-width containers for mobile */
+    .image-container {
         margin-bottom: 10px; /* Add spacing between images */
     }
 
-    .image-container img,
-    .small-image-container img {
-        width: 100%; /* Full-width images */
-        height: auto; /* Maintain aspect ratio */
+    .divider {
+        display: none; /* Hide dividers for cleaner look */
     }
 
-    .image-container:hover,
-    .small-image-container:hover {
-        transform: none; /* Disable hover zoom for touch devices */
-        filter: none; /* Disable hover effects */
+    .image-container img {
+        max-height: 40vh; /* Limit height for small screens */
     }
+
+    .image-container:hover {
+        transform: none; /* Disable hover effects on touch devices */
+        filter: none;
+    }
+}
+
 }
 .card img {
     width: 100%; /* Make the image fill the container */
