@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Navbar */
@@ -62,17 +62,16 @@ nav ul li a:hover {
 
 /* Card Wrapper */
 .card-wrapper {
-    width: 100%; /* Make cards take full width on small screens */
-    max-width: 300px; /* Limit the width for larger screens */
-    margin: 0 auto;
+    flex: 1 1 calc(100% - 30px); /* Make cards take full width on mobile, with spacing */
+    max-width: 300px; /* Prevent cards from getting too wide */
     text-align: center;
+    margin: 0 auto;
 }
 
 /* Card */
 .card {
     position: relative;
     perspective: 1000px;
-    margin: 0 auto;
 }
 
 .card-inner {
@@ -126,32 +125,34 @@ nav ul li a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav ul li {
-        margin: 5px;
+    .card-wrapper {
+        flex: 1 1 calc(100% - 20px); /* Take full width with some spacing */
+        max-width: 95%; /* Prevent cards from exceeding the screen width */
     }
 
     .character-title {
         font-size: 16px;
     }
 
-    .card-wrapper {
-        max-width: 90%; /* Ensure cards take up most of the screen */
+    .character-blurb {
+        font-size: 12px;
+        padding: 8px;
     }
 }
 
 @media (max-width: 480px) {
-    nav ul {
-        flex-direction: column; /* Stack nav items vertically */
-    }
-
     .card-container {
         flex-direction: column; /* Stack cards vertically */
         align-items: center;
     }
 
     .card-wrapper {
-        width: 100%;
+        width: 100%; /* Take full width on very small screens */
         max-width: 95%;
+    }
+
+    .card-inner {
+        height: auto; /* Ensure the card scales properly */
     }
 
     .character-title {
