@@ -1,4 +1,4 @@
-/* Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,34 +7,41 @@
 
 body {
     font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Navbar */
 nav {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
     position: fixed;
     top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px 20px;
     z-index: 1000;
 }
 
 nav ul {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    padding: 0;
+    margin: 0;
     list-style: none;
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 5px 10px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
+    padding: 5px 10px;
     transition: color 0.3s ease;
 }
 
@@ -42,255 +49,117 @@ nav ul li a:hover {
     color: #f39c12;
 }
 
-/* Full-Screen Rectangle Sections */
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.rectangle {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Divider */
-.divider {
-    width: 2px;
-    background-color: black;
-    height: 100%;
-}
-
-/* Image Containers */
-.image-container {
-    flex: 1;
-    overflow: hidden;
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
-}
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-/* Left Side of Third Rectangle */
-.left-side {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.small-image-container {
-    flex: 1;
-    overflow: hidden;
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
-}
-
-.small-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-/* Small Divider */
-.small-divider {
-    height: 2px;
-    background-color: black;
-    width: 100%;
-}
-
-/* Hover Effect */
-.image-container:hover,
-.small-image-container:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2) saturate(1.3);
-}
-
-.image-container:hover img,
-.small-image-container:hover img {
-    transform: scale(1.2);
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .rectangle {
-        flex-direction: column;
-    }
-
-    .divider {
-        width: 100%;
-        height: 2px;
-    }
-
-    .left-side {
-        flex-direction: row;
-    }
-
-    .small-divider {
-        width: 2px;
-        height: 100%;
-    }
-}
-
-/* card for mtg and art */
-/* Reset */
-
+/* Card Container */
 .card-container {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap; /* Allow cards to wrap */
+    gap: 15px;
     padding: 20px;
-    width: 100%;
+    margin-top: 70px; /* Ensure spacing below the navbar */
     justify-content: center;
-    margin-top: 80px;
-    flex-wrap: wrap;
+    width: 100%;
 }
 
 /* Card Wrapper */
 .card-wrapper {
+    width: 100%; /* Make cards take full width on small screens */
+    max-width: 300px; /* Limit the width for larger screens */
+    margin: 0 auto;
     text-align: center;
-    width: 300px;
 }
 
 /* Card */
 .card {
     position: relative;
     perspective: 1000px;
-    margin-bottom: 20px;
+    margin: 0 auto;
 }
 
 .card-inner {
     width: 100%;
-    height: 450px;
+    height: auto;
     transform-style: preserve-3d;
     transition: transform 0.6s ease-in-out;
-    position: relative;
 }
 
 .card:hover .card-inner {
     transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
 .card-front img,
 .card-back img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     border-radius: 10px;
+    object-fit: cover;
 }
 
-.card-back {
-    transform: rotateY(180deg);
-}
-
+/* Text Below Card */
 .card-text {
-    margin-top: 20px;
     text-align: center;
+    margin-top: 10px;
 }
 
-/* Title */
 .character-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #333;
     cursor: pointer;
 }
 
 .character-title:hover {
-    color: #f39c12; /* Highlight on hover */
+    color: #f39c12;
 }
 
-/* Blurb (Hidden State) */
 .character-blurb {
-    font-size: 16px; /* Adjusted font size for readability */
-    color: #444; /* Slightly darker color for better contrast */
-    line-height: 1.8; /* Increased line height for better spacing */
-    margin-top: 10px;
-    padding: 15px; /* Add padding for breathing space */
-    background-color: #f0f0f0; /* Light gray background for visibility */
-    border: 1px solid #ccc; /* Subtle border to define the box */
-    border-radius: 10px; /* Rounded corners for a soft look */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-    text-align: left; /* Align text to the left for a clean structure */
-    display: none; /* Hidden by default */
-    transition: all 0.3s ease-in-out; /* Smooth transition for animations */
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Blurb (Visible State) */
-.character-blurb.show {
-    display: block; /* Make visible */
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Reset position */
-}
-
-/* Blurb Visible */
-.character-blurb.show {
-    display: block;
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Reset position */
-}
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Stack navbar items */
-        align-items: center;
-    }
-
     nav ul li {
-        margin: 5px 0; /* Reduce margin for stacked items */
-    }
-
-    .card-wrapper {
-        max-width: 95%; /* Cards take most of the screen width */
+        margin: 5px;
     }
 
     .character-title {
-        font-size: 18px; /* Slightly smaller font */
+        font-size: 16px;
     }
 
-    .character-blurb {
-        font-size: 14px; /* Adjust font size for smaller screens */
-        padding: 10px; /* Reduce padding for mobile */
+    .card-wrapper {
+        max-width: 90%; /* Ensure cards take up most of the screen */
     }
 }
 
 @media (max-width: 480px) {
+    nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+    }
+
     .card-container {
         flex-direction: column; /* Stack cards vertically */
         align-items: center;
     }
 
     .card-wrapper {
-        width: 100%; /* Cards span full width */
-    }
-
-    .card-inner {
-        height: 400px; /* Adjust card height for smaller screens */
+        width: 100%;
+        max-width: 95%;
     }
 
     .character-title {
-        font-size: 16px; /* Further reduce font size */
+        font-size: 14px;
     }
 
     .character-blurb {
-        font-size: 12px; /* Make font size smaller for small devices */
+        font-size: 12px;
+        padding: 8px;
     }
 }
