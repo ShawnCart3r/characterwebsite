@@ -24,7 +24,7 @@ nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -41,9 +41,8 @@ nav ul li a {
 nav ul li a:hover {
     color: #f39c12;
 }
-/* main page */
 
-/* Full-Screen Rectangle Sections */
+/* Main Page Sections */
 .container {
     display: flex;
     flex-direction: column;
@@ -57,17 +56,15 @@ nav ul li a:hover {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    flex-wrap: wrap;
 }
 
-/* Divider */
 .divider {
     width: 2px;
     background-color: black;
     height: 100%;
 }
 
-/* Image Containers */
 .image-container {
     flex: 1;
     overflow: hidden;
@@ -82,13 +79,16 @@ nav ul li a:hover {
     transition: transform 0.4s ease;
 }
 
-/* Left Side of Third Rectangle */
-.left-side {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.image-container:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) saturate(1.3);
 }
 
+.image-container:hover img {
+    transform: scale(1.2);
+}
+
+/* Smaller Image Containers */
 .small-image-container {
     flex: 1;
     overflow: hidden;
@@ -103,27 +103,125 @@ nav ul li a:hover {
     transition: transform 0.4s ease;
 }
 
-/* Small Divider */
+.small-image-container:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) saturate(1.3);
+}
+
 .small-divider {
     height: 2px;
     background-color: black;
     width: 100%;
 }
 
-/* Hover Effect */
-.image-container:hover,
-.small-image-container:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2) saturate(1.3);
+/* Card Layout */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    margin-top: 80px;
+    overflow: hidden;
 }
 
-.image-container:hover img,
-.small-image-container:hover img {
-    transform: scale(1.2);
+.card-wrapper {
+    text-align: center;
+    width: 300px;
+    max-width: 100%;
 }
 
-/* Media Queries for Mobile Responsiveness */
-@media screen and (max-width: 1024px) {
+.card {
+    position: relative;
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 150%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    border-radius: 10px;
+}
+
+.character-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.character-title:hover {
+    color: #f39c12;
+}
+
+.character-blurb {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    padding: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: #333;
+    text-align: justify;
+}
+
+.character-blurb.show {
+    display: block;
+    opacity: 1;
+    max-height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 1440px) {
+    nav ul li a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1024px) {
     .rectangle {
         flex-direction: column;
         height: auto;
@@ -134,279 +232,39 @@ nav ul li a:hover {
         height: 2px;
     }
 
-    .image-container {
-        height: 500px;
-    }
-
-    nav ul li {
-        margin: 0 10px;
-    }
-
     nav ul li a {
-        font-size: 16px;
-    }
-}
-
-/* iPad Mini and iPhone 14/13 Pro Max */
-@media screen and (max-width: 834px) {
-    .small-image-container {
-        flex: 1 1 50%;
-        height: 200px;
+        font-size: 15px;
     }
 
     .image-container {
         height: 400px;
     }
-
-    nav ul li a {
-        font-size: 15px;
-    }
 }
 
-/* iPhone 12 and earlier models */
-@media screen and (max-width: 480px) {
-    nav ul li {
-        margin: 0 5px;
+@media (max-width: 768px) {
+    .image-container {
+        height: 300px;
     }
 
     nav ul li a {
         font-size: 14px;
     }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        margin: 0 5px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
 
     .small-image-container {
-        flex: 1 1 100%;
         height: 150px;
     }
 
     .rectangle {
         height: auto;
-    }
-
-    .image-container {
-        height: 300px;
-    }
-}
-
-/* Card Layout */
-.card-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    justify-content: center;
-    margin-top: 80px;
-    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
-    overflow: hidden; /* Prevent overflow issues */
-}
-
-/* Card Wrapper */
-.card-wrapper {
-    text-align: center;
-    width: 300px; /* Adjust width to image size */
-    max-width: 100%; /* Ensure it fits the screen width on mobile */
-}
-
-/* Card */
-.card {
-    position: relative;
-    perspective: 1000px; /* Enable 3D perspective for the flip effect */
-    margin-bottom: 20px;
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-top: 150%; /* Maintain 2:3 aspect ratio (height = width * 1.5) */
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out;
-}
-
-.card:hover .card-inner {
-    transform: rotateY(180deg); /* Flip card */
-}
-
-.card-front,
-.card-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Hide the back side when flipped */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-}
-
-/* Front of the Card */
-.card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image fits properly */
-    border-radius: 10px;
-}
-
-/* Back of the Card */
-.card-back {
-    transform: rotateY(180deg); /* Ensure the back is flipped initially */
-    background-color: #f0f0f0; /* Example background for the back */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    font-size: 16px;
-    color: #333;
-    border-radius: 10px;
-}
-
-/* Text Below Card */
-.card-text {
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Title */
-.character-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-}
-
-.character-title:hover {
-    color: #f39c12;
-}
-.character-blurb {
-    display: none; /* Hidden by default */
-    opacity: 0; /* Fully transparent */
-    max-height: 0; /* Collapse the space it takes */
-    overflow: hidden; /* Prevent content overflow */
-    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
-    padding: 15px; /* Add padding for better spacing */
-    font-size: 14px; /* Professional, legible font size */
-    line-height: 1.6; /* Improve readability */
-    background-color: #ffffff; /* Clean white background */
-    border: 1px solid #ddd; /* Subtle border for structure */
-    border-radius: 8px; /* Soft rounded corners */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    font-family: Arial, sans-serif; /* Clean, professional font */
-    color: #333; /* Neutral text color for readability */
-    text-align: justify; /* Align text for a clean block layout */
-}
-
-.character-blurb.show {
-    display: block; /* Make it visible */
-    opacity: 1; /* Fully visible */
-    max-height: 300px; /* Adjust max-height based on content */
-}
-
-/* Optional: Add hover or active styles for better interactivity */
-.character-blurb:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
-    background-color: #f9f9f9; /* Slightly darker background */
-}
-
-
-
-
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    /* Newest iPads */
-    .card-wrapper {
-        width: 90%; /* Slightly narrower for tablets */
-        max-width: 350px; /* Keep max card size consistent */
-    }
-
-    .character-title {
-        font-size: 16px; /* Adjust title size for iPad screens */
-    }
-
-    .character-blurb {
-        font-size: 13px; /* Adjust blurb size for readability */
-        padding: 12px; /* Reduce padding slightly */
-    }
-}
-
-@media (max-width: 768px) {
-    /* Older iPads and Small Tablets */
-    .card-wrapper {
-        width: 90%; /* Narrow cards slightly */
-    }
-
-    .card {
-        aspect-ratio: 2 / 3; /* Keep proportions consistent */
-    }
-
-    .character-title {
-        font-size: 16px; /* Adjust font size for readability */
-    }
-
-    .character-blurb {
-        font-size: 13px; /* Smaller blurb size */
-        padding: 12px; /* Adjust padding */
-    }
-}
-
-@media (max-width: 480px) {
-    /* Newer iPhones (iPhone 14, 13, 12) */
-    .card-wrapper {
-        width: 95%; /* Use most of the screen width */
-        margin: 15px auto; /* Add spacing between cards */
-    }
-
-    .card {
-        aspect-ratio: 2 / 3; /* Maintain proportions */
-    }
-
-    .character-title {
-        font-size: 15px; /* Slightly smaller title */
-    }
-
-    .character-blurb {
-        font-size: 12px; /* Compact font size for blurbs */
-        padding: 10px; /* Compact padding */
-    }
-}
-
-@media (max-width: 390px) {
-    /* iPhone 12 and Older */
-    .card-wrapper {
-        width: 100%; /* Full-width cards */
-    }
-
-    .card {
-        aspect-ratio: 2 / 3; /* Maintain consistent proportions */
-    }
-
-    .character-title {
-        font-size: 14px; /* Slightly smaller title font */
-    }
-
-    .character-blurb {
-        font-size: 11px; /* Compact font for blurbs */
-        padding: 8px; /* Compact padding */
-    }
-}
-
-@media (max-width: 320px) {
-    /* Oldest Devices (iPhone SE, iPhone 5) */
-    .card-wrapper {
-        width: 100%; /* Full width on smallest screens */
-    }
-
-    .card {
-        aspect-ratio: 2 / 3; /* Maintain proportions */
-    }
-
-    .character-title {
-        font-size: 13px; /* Tiny font for titles */
-    }
-
-    .character-blurb {
-        font-size: 10px; /* Compact font size for blurbs */
-        padding: 6px; /* Minimal padding */
     }
 }
