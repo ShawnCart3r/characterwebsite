@@ -109,11 +109,12 @@ nav ul li a:hover {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    margin-top: 80px; /* Space for the fixed navbar */
+    margin-top: 80px; /* Add space for the fixed navbar */
     justify-content: center;
     width: 100%;
 }
 
+/* Card Wrapper */
 .card-wrapper {
     text-align: center;
     width: 350px;
@@ -121,7 +122,7 @@ nav ul li a:hover {
     margin: 0 auto; /* Center the card */
 }
 
-/* Card Structure */
+/* Card */
 .card {
     position: relative;
     perspective: 1000px;
@@ -161,9 +162,10 @@ nav ul li a:hover {
     transform: rotateY(180deg);
 }
 
-/* Card Text */
+/* Text Below Card */
 .card-text {
     margin-top: 20px;
+    padding: 0 15px;
     text-align: center;
 }
 
@@ -171,8 +173,7 @@ nav ul li a:hover {
     font-size: 20px;
     font-weight: bold;
     color: #333;
-    cursor: pointer;
-    transition: color 0.3s ease;
+    margin-bottom: 10px;
 }
 
 .character-title:hover {
@@ -182,30 +183,23 @@ nav ul li a:hover {
 .character-blurb {
     font-size: 16px;
     color: #444;
-    line-height: 1.6;
-    margin-top: 10px;
+    line-height: 1.8;
     padding: 15px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    display: none;
-    transition: all 0.3s ease-in-out;
-}
-
-.character-blurb.show {
-    display: block;
+    margin-top: 10px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .card-wrapper {
-        width: 90%;
+        width: 90%; /* Adjust card width for tablets */
     }
 
     .card-inner {
-        height: 450px;
+        height: 450px; /* Adjust card height */
     }
 
     .character-title {
@@ -225,16 +219,16 @@ nav ul li a:hover {
     }
 
     .card-wrapper {
-        width: 100%;
+        width: 100%; /* Full width for mobile screens */
     }
 
     .card-inner {
-        height: 400px;
+        height: auto; /* Let height adjust dynamically */
     }
 
     .card-front img,
     .card-back img {
-        height: auto; /* Maintain image proportions */
+        height: auto; /* Maintain aspect ratio for images */
     }
 
     .character-title {
