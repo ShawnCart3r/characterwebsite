@@ -218,45 +218,53 @@ nav ul li a:hover {
 }
 
 /* Responsive Design */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .card-wrapper {
-        width: 90%; /* Cards take most of the screen width */
+        width: 100%; /* Cards take full width */
+        max-width: 100%; /* Avoid overflow */
     }
 
     .card-inner {
-        height: 450px; /* Adjust card height for tablets */
+        height: 450px; /* Ensure card height adjusts for readability */
     }
 
     .character-title {
-        font-size: 18px;
+        font-size: 18px; /* Slightly smaller for mobile */
     }
 
     .character-blurb {
-        font-size: 14px;
+        font-size: 14px; /* Adjust font size for smaller screens */
         padding: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .card-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack cards vertically */
         align-items: center;
     }
 
     .card-wrapper {
         width: 100%; /* Cards span full width */
+        margin-bottom: 20px; /* Add spacing between stacked cards */
     }
 
     .card-inner {
-        height: 400px; /* Adjust card height for smaller screens */
+        height: auto; /* Allow height to adjust dynamically */
+    }
+
+    .card-front img,
+    .card-back img {
+        height: auto; /* Ensure images fit dynamically within the card */
     }
 
     .character-title {
-        font-size: 16px;
+        font-size: 16px; /* Reduce title size for smaller screens */
     }
 
     .character-blurb {
-        font-size: 12px;
-        padding: 8px;
+        font-size: 12px; /* Smaller font for mobile readability */
+        padding: 8px; /* Reduce padding */
     }
 }
