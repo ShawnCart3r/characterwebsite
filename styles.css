@@ -249,20 +249,48 @@ nav ul li a:hover {
 }
 /* Responsive Design */
 @media (max-width: 768px) {
-    .card-container {
-        flex-wrap: wrap;
-        gap: 15px;
+    nav ul {
+        flex-direction: column; /* Stack navbar items */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Reduce margin for stacked items */
     }
 
     .card-wrapper {
-        width: 90%; /* Full width on smaller screens */
+        max-width: 95%; /* Cards take most of the screen width */
     }
 
     .character-title {
-        font-size: 18px;
+        font-size: 18px; /* Slightly smaller font */
     }
 
     .character-blurb {
-        font-size: 14px;
+        font-size: 14px; /* Adjust font size for smaller screens */
+        padding: 10px; /* Reduce padding for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+    }
+
+    .card-wrapper {
+        width: 100%; /* Cards span full width */
+    }
+
+    .card-inner {
+        height: 400px; /* Adjust card height for smaller screens */
+    }
+
+    .character-title {
+        font-size: 16px; /* Further reduce font size */
+    }
+
+    .character-blurb {
+        font-size: 12px; /* Make font size smaller for small devices */
     }
 }
