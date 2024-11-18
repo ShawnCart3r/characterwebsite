@@ -122,6 +122,7 @@ nav ul li a:hover {
 }
 
 /* Card Layout */
+/* General Card Styles */
 .card-container {
     display: flex;
     gap: 20px;
@@ -214,7 +215,7 @@ nav ul li a:hover {
 .character-blurb.show {
     display: block;
 }
-/* Responsive Design */
+
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .card-wrapper {
