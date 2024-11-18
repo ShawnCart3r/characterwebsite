@@ -182,79 +182,89 @@ nav ul li a:hover {
 /* General Card Container for Responsiveness */
 .card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center content horizontally */
-    padding: 15px; /* Adjust padding for smaller screens */
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    justify-content: center; /* Center cards horizontally */
+    padding: 10px; /* Reduce padding for small screens */
+    gap: 20px; /* Add space between cards */
 }
 
 /* Card Wrapper */
 .card-wrapper {
     display: flex;
     flex-direction: column; /* Stack card and text vertically */
-    align-items: center; /* Center align card and text */
-    width: 90%; /* Use most of the screen width */
-    max-width: 350px; /* Prevent oversized cards */
-    margin: 20px auto; /* Add spacing between cards */
+    align-items: center; /* Center card and text */
+    width: 100%; /* Full width on mobile */
+    max-width: 350px; /* Limit card size on larger devices */
+    margin: 0 auto; /* Center wrapper horizontally */
 }
 
-/* Card Adjustments */
+/* Card */
 .card {
-    width: 100%; /* Card takes up full width of its wrapper */
+    width: 100%; /* Make card responsive */
+    max-width: 350px; /* Prevent oversized cards */
     aspect-ratio: 2 / 3; /* Maintain image aspect ratio */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
-    overflow: hidden;
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add depth */
+    overflow: hidden; /* Prevent overflow issues */
 }
 
-/* Text Below the Card */
+/* Text Below Card */
 .card-text {
-    text-align: center; /* Center text on mobile */
+    text-align: center; /* Center-align text */
     margin-top: 15px; /* Space between card and text */
 }
 
-/* Title Styling */
+/* Title */
 .character-title {
-    font-size: 16px; /* Adjust for smaller screens */
+    font-size: 16px; /* Adjust font size for mobile */
     font-weight: bold;
     margin-bottom: 10px; /* Space below the title */
-    color: #333; /* Neutral text color */
+    color: #333; /* Neutral color for readability */
 }
 
 .character-title:hover {
     color: #0077cc; /* Optional hover effect */
 }
 
-/* Blurb Styling */
+/* Blurb */
 .character-blurb {
     font-size: 14px; /* Slightly smaller text for mobile */
-    line-height: 1.6;
-    color: #444;
-    text-align: justify; /* Align text for readability */
+    line-height: 1.6; /* Comfortable line spacing */
+    color: #444; /* Neutral text color */
+    text-align: justify; /* Professional text alignment */
     margin-top: 10px; /* Space above the blurb */
     padding: 15px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light background for contrast */
     border: 1px solid #ddd; /* Add a subtle border */
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    max-width: 100%; /* Ensure it doesn't overflow */
+    border-radius: 8px; /* Rounded corners for a clean look */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Gentle shadow */
+    max-width: 100%; /* Ensure blurb doesn’t overflow */
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transition: all 0.3s ease-in-out; /* Smooth toggle transition */
 }
 
-/* Mobile-Specific Media Query */
+.character-blurb.show {
+    display: block; /* Make visible */
+    opacity: 1; /* Fully visible */
+}
+
+/* Mobile-Specific Adjustments */
 @media (max-width: 768px) {
     .card-wrapper {
-        width: 95%; /* Wider cards for smaller screens */
+        width: 95%; /* Use most of the screen */
     }
 
     .card {
-        aspect-ratio: 2 / 3; /* Maintain aspect ratio */
+        aspect-ratio: 2 / 3; /* Maintain ratio on smaller devices */
     }
 
     .character-title {
-        font-size: 15px; /* Smaller title font */
+        font-size: 15px; /* Slightly smaller title font */
     }
 
     .character-blurb {
-        font-size: 13px; /* Adjust for smaller screens */
+        font-size: 13px; /* Smaller text for compact screens */
         padding: 10px;
     }
 }
@@ -264,9 +274,15 @@ nav ul li a:hover {
         width: 100%; /* Full width on very small screens */
     }
 
+    .card {
+        aspect-ratio: 2 / 3; /* Maintain correct ratio */
+    }
+
     .character-title {
         font-size: 14px; /* Smaller title font for compact devices */
     }
 
     .character-blurb {
-        font-size: 12px
+        font-size: 12px; /* Adjust blurb font size */
+    }
+}
