@@ -293,25 +293,32 @@ nav ul li a:hover {
 /* Character Details */
 /* Character Title Styling */
 /* Character Title Styling */
+/* Character Title Styling */
 .character-title {
     font-size: clamp(16px, 4vw, 24px);
     font-weight: bold;
-    color: #00bcd4; /* Cyan blue for a dark theme */
+    color: #00bcd4; /* Cyan blue for contrast */
     text-transform: uppercase;
     letter-spacing: 1.5px;
     cursor: pointer;
     margin: 10px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle dark shadow */
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Strong shadow */
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, background 0.5s ease;
     position: relative;
     display: inline-block;
     overflow: hidden;
+    background: linear-gradient(90deg, #00bcd4, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .character-title:hover {
-    color: #03a9f4; /* Brighter cyan on hover */
-    transform: scale(1.1) rotate(-1deg);
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    transform: scale(1.2) rotate(-2deg);
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(90deg, #03a9f4, #00bcd4, #29b6f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .character-title::after {
@@ -320,15 +327,16 @@ nav ul li a:hover {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
-    background: #00bcd4;
-    transition: width 0.3s ease;
+    height: 3px;
+    background: #03a9f4;
+    transition: width 0.4s ease;
 }
 
 .character-title:hover::after {
     width: 100%;
 }
 
+/* Ripple Effect */
 .character-title::before {
     content: '';
     position: absolute;
@@ -336,16 +344,30 @@ nav ul li a:hover {
     left: 50%;
     width: 200%;
     height: 200%;
-    background: rgba(3, 169, 244, 0.2);
+    background: rgba(3, 169, 244, 0.15);
     transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
-    animation: ripple 0.6s ease-out;
     z-index: -1;
+    transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .character-title:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
+}
+
+/* Shimmer Animation */
+.character-title.shimmer {
+    background: linear-gradient(90deg, #00bcd4, #03a9f4, #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200%; }
+    100% { background-position: 200%; }
 }
 
 /* Card Text Styling */
@@ -354,32 +376,33 @@ nav ul li a:hover {
     margin: 15px 0;
     font-size: 16px;
     line-height: 1.6;
-    color: #ddd; /* Light gray text for dark themes */
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(33, 33, 33, 0.7)); /* Dark gradient */
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    color: #ddd; /* Light gray text */
+    background: linear-gradient(135deg, rgba(33, 33, 33, 0.8), rgba(50, 50, 50, 1));
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
     position: relative;
     overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.5s ease;
 }
 
 .card-text:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-    transform: translateY(-10px) scale(1.02);
-    background: linear-gradient(135deg, rgba(33, 33, 33, 0.7), rgba(50, 50, 50, 0.9));
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+    transform: translateY(-10px) scale(1.05);
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(77, 77, 77, 1));
 }
 
+/* Rotating Background Effect */
 .card-text::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
     transform: rotate(0deg);
-    animation: rotateBackground 10s linear infinite;
+    animation: rotateBackground 12s linear infinite;
     z-index: 0;
 }
 
@@ -389,24 +412,10 @@ nav ul li a:hover {
     }
 }
 
-/* Shimmer Effect */
-.character-title.shimmer {
-    background: linear-gradient(90deg, #00bcd4, #03a9f4, #00bcd4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { background-position: -200%; }
-    100% { background-position: 200%; }
-}
-
-/* Card Hover Flip Animation */
+/* 3D Flip Effect */
 .card-text-inner {
     transform-style: preserve-3d;
-    transition: transform 0.6s;
+    transition: transform 0.6s ease-out;
     position: relative;
 }
 
@@ -422,47 +431,60 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
-    padding: 10px;
+    border-radius: 12px;
+    padding: 15px;
 }
+
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(33, 33, 33, 1));
+}
+
 
 /* Character Title Styling */
 .character-title {
     font-size: clamp(16px, 4vw, 24px);
     font-weight: bold;
-    color: #e0e0e0; /* Light gray text for contrast */
+    color: #d1e3ff; /* Cool light blue for contrast */
     text-transform: uppercase;
     letter-spacing: 1.5px;
     cursor: pointer;
     margin: 10px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Stronger shadow for definition */
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9); /* Strong shadow for depth */
+    background: linear-gradient(90deg, #5078ff, #3249b6); /* Gradient with vibrant blues */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     position: relative;
     display: inline-block;
     overflow: hidden;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.5s ease, background 0.5s ease;
 }
 
 .character-title:hover {
-    color: #ffffff; /* Brighter color on hover */
     transform: scale(1.1) rotate(-1deg);
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1); /* Enhanced shadow on hover */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1); /* Enhanced shadow */
+    background: linear-gradient(90deg, #87a8ff, #6070ff); /* Brightened gradient on hover */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Underline Effect */
 .character-title::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
-    background: #757575; /* Subtle underline for contrast */
-    transition: width 0.3s ease;
+    height: 3px;
+    background: #3249b6; /* Blue accent underline */
+    transition: width 0.4s ease;
 }
 
 .character-title:hover::after {
     width: 100%;
 }
 
+/* Ripple Effect */
 .character-title::before {
     content: '';
     position: absolute;
@@ -470,15 +492,15 @@ nav ul li a:hover {
     left: 50%;
     width: 200%;
     height: 200%;
-    background: rgba(117, 117, 117, 0.3); /* Subtle ripple for dark background */
+    background: rgba(50, 100, 255, 0.3); /* Soft blue ripple */
     transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
-    animation: ripple 0.6s ease-out;
     z-index: -1;
+    transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .character-title:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
 }
 
@@ -488,30 +510,31 @@ nav ul li a:hover {
     margin: 15px 0;
     font-size: 16px;
     line-height: 1.6;
-    color: #e0e0e0; /* Light gray text for contrast */
-    background: linear-gradient(135deg, #1c1c1c, #2b2b2b); /* Dark but distinguishable background */
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow for depth */
+    color: #e0e0e0; /* Off-white for readability */
+    background: linear-gradient(135deg, rgba(40, 40, 70, 0.9), rgba(20, 20, 50, 1)); /* Deep blue gradient */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Subtle shadow */
     position: relative;
     overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.5s ease;
 }
 
 .card-text:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
-    transform: translateY(-10px) scale(1.02);
-    background: linear-gradient(135deg, #2b2b2b, #3a3a3a); /* Slightly lighter gradient on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+    transform: translateY(-10px) scale(1.05);
+    background: linear-gradient(135deg, rgba(60, 60, 120, 1), rgba(30, 30, 90, 1)); /* Slightly brighter hover gradient */
 }
 
+/* Rotating Background Effect */
 .card-text::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(40, 40, 40, 0.8), rgba(20, 20, 20, 0.9));
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(70, 70, 120, 0.4), rgba(30, 30, 60, 0.8)); /* Subtle blue hue */
     transform: rotate(0deg);
     animation: rotateBackground 10s linear infinite;
     z-index: 0;
@@ -523,273 +546,151 @@ nav ul li a:hover {
     }
 }
 
-/* Shimmer Effect */
-.character-title.shimmer {
-    background: linear-gradient(90deg, #757575, #e0e0e0, #757575); /* Lighter shimmer */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { background-position: -200%; }
-    100% { background-position: 200%; }
-}
-
-/* Neon Border Effect */
-.character-title.neon {
-    border: 2px solid transparent;
-    border-image: linear-gradient(90deg, #5c5c5c, #9e9e9e);
-    border-image-slice: 1;
-    position: relative;
-    padding: 10px;
-    animation: neon 1.5s infinite alternate;
-}
-
-@keyframes neon {
-    from {
-        box-shadow: 0 0 10px #5c5c5c, 0 0 20px #9e9e9e, 0 0 30px #9e9e9e;
-    }
-    to {
-        box-shadow: 0 0 20px #5c5c5c, 0 0 40px #9e9e9e, 0 0 60px #9e9e9e;
-    }
-}
-
-/* Gradient Background Animation */
-.card-text {
-    background: linear-gradient(45deg, #292929, #1c1c1c, #3a3a3a); /* Clear contrast with text */
-    background-size: 200% 200%;
-    animation: gradientShift 3s ease infinite;
-    color: #e0e0e0; /* Light text for visibility */
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-
-/* Typing Effect */
-.character-title.typing {
-    font-size: 24px;
-    color: #333; /* Dark gray for typing text */
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #555;
-    width: 0;
-    animation: typing 2s steps(22) forwards, blink 0.5s step-end infinite alternate;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    from { border-right-color: transparent; }
-    to { border-right-color: #555; }
-}
-
-/* Glitch Effect */
-.character-title.glitch {
-    position: relative;
-    color: #333; /* Dark gray */
-    text-transform: uppercase;
-    animation: glitch 1s infinite;
-}
-
-.character-title.glitch::before,
-.character-title.glitch::after {
-    content: attr(data-text);
+/* Particle Effect */
+.card-text::after {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: #555; /* Lighter gray glitch overlay */
-    overflow: hidden;
-    clip-path: inset(0 0 0 0);
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(80, 120, 255, 0.3), rgba(0, 0, 0, 0));
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatParticles 6s infinite ease-in-out;
+    pointer-events: none;
 }
 
-.character-title.glitch::before {
-    animation: glitchTop 1s infinite;
-}
-
-.character-title.glitch::after {
-    animation: glitchBottom 1.5s infinite;
-}
-
-@keyframes glitch {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(-2px, -2px); }
-    80% { transform: translate(2px, 2px); }
-}
-
-@keyframes glitchTop {
-    0% { clip-path: inset(0 100% 0 0); }
-    50% { clip-path: inset(0 0 50% 0); }
-    100% { clip-path: inset(0 0 0 100%); }
-}
-
-@keyframes glitchBottom {
-    0% { clip-path: inset(50% 0 0 0); }
-    50% { clip-path: inset(0 0 100% 0); }
-    100% { clip-path: inset(0 100% 0 0); }
+@keyframes floatParticles {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
 }
 
 
 
+/* JavaScript Required for Custom Cursor */
 
 .character-blurb {
     display: none;
     opacity: 0;
+    transform: scale(0.95); /* Subtle shrink effect for pop-in animation */
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    font-size: 18px; /* Comfortable text size */
-    line-height: 1.8; /* Smooth line spacing for readability */
-    color: #d6d6d6; /* Light gray text color */
-    text-align: center; /* Center-align text */
-    margin: 0 auto; /* Center the blurb container */
-    padding: 20px 30px; /* Balanced internal spacing */
-    background: radial-gradient(circle at center, #1a1a1a, #121212 85%); /* Subtle background depth */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-    font-family: 'Open Sans', Arial, sans-serif; /* Modern, readable font */
+    font-size: 14px; /* Smaller base font size */
+    line-height: 1.1; /* Ultra-tight line spacing */
+    color: #d6d6d6;
+    text-align: justify; /* Align text for clean edges */
+    margin: 0; /* No external margins */
+    padding: 10px; /* Minimal internal padding */
+    background: radial-gradient(circle at center, #1a1a1a, #0d0d0d 85%);
+    border-radius: 10px; /* Subtle rounding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 0 8px rgba(50, 50, 50, 0.3);
+    font-family: 'Open Sans', Arial, sans-serif;
+    backdrop-filter: blur(6px); /* Frosted glass effect */
+    max-height: 400px; /* Limit container height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: #4caf50 #1a1a1a;
 }
 
 .character-blurb h2 {
-    margin: 0 0 15px;
-    font-size: 24px; /* Larger font size for title */
-    font-weight: bold; /* Emphasize the title */
-    text-transform: uppercase; /* Bold impact */
-    letter-spacing: 1px; /* Stylish spacing */
-    background: linear-gradient(90deg, #4caf50, #66bb6a); /* Gradient text */
+    margin: 0; /* No external margins */
+    padding: 4px 0; /* Minimal vertical padding */
+    font-size: 16px; /* Compact heading size */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Slightly tight character spacing */
+    background: linear-gradient(90deg, #76ff03, #00e676, #1de9b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border-bottom: 2px solid #4caf50; /* Subtle underline */
+    border-bottom: 1px solid #76ff03; /* Thin separator */
     display: inline-block;
+    text-shadow: 0 1px 2px rgba(0, 255, 128, 0.6); /* Subtle shadow */
 }
 
 .character-blurb p {
-    margin: 0 0 18px; /* Balanced spacing between paragraphs */
-    padding: 0; /* No additional padding */
-    text-align: center; /* Center-align paragraphs */
-    line-height: 1.8; /* Improved readability */
+    margin: 0; /* Completely eliminate vertical gaps */
+    padding: 3px 0; /* Tight, balanced padding */
+    text-align: justify; /* Justified alignment */
+    line-height: 1.1; /* Ultra-tight line spacing */
     color: #e0e0e0;
-    animation: fadeIn 0.5s ease-in-out; /* Subtle fade-in */
-    letter-spacing: 0.4px; /* Enhanced text clarity */
+    font-size: 14px; /* Compact text size */
+    letter-spacing: 0.2px; /* Slightly tighter spacing */
+    background: rgba(0, 0, 0, 0.2); /* Subtle translucent background */
+    border-left: 2px solid #76ff03; /* Thin decorative border */
+    border-radius: 3px; /* Slight rounding */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle inner depth */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.character-blurb p + p {
+    margin-top: 1px; /* Minimal gap between consecutive paragraphs */
+}
+
+.character-blurb p:last-child {
+    margin-bottom: 0; /* Prevent trailing gaps */
+}
+
+.character-blurb p:hover {
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker background on hover */
+    color: #ffffff; /* Brightened text on hover */
 }
 
 .character-blurb a {
-    color: #4caf50; /* Subtle green for links */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Emphasize the link */
-    position: relative; /* For pseudo-element animations */
-    transition: color 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-.character-blurb a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background: #4caf50;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease-in-out;
+    color: #76ff03;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
 }
 
 .character-blurb a:hover {
-    color: #66bb6a; /* Brighter green on hover */
+    color: #00e676;
 }
 
-.character-blurb a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+.character-blurb.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1); /* Fully expanded */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 255, 128, 0.5);
 }
 
-/* Subtle glow effect for the blurb container on hover */
-.character-blurb:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 0 15px rgba(76, 175, 80, 0.5);
-    transition: box-shadow 0.3s ease-in-out;
+/* Scrollbar Customization */
+.character-blurb::-webkit-scrollbar {
+    width: 6px; /* Slim scrollbar */
 }
+
+.character-blurb::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.character-blurb::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #76ff03, #00e676);
+    border-radius: 3px;
+}
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .character-blurb {
         padding: 15px 20px;
-        font-size: 16px; /* Adjust text size for smaller screens */
+        font-size: 16px;
     }
 
     .character-blurb h2 {
-        font-size: 20px; /* Adjust heading size */
+        font-size: 22px;
     }
 }
 
-
-/* Improved show state with slight glow effect */
-.character-blurb.show {
-    display: block;
-    opacity: 1;
-    transform: scale(1); /* Pop-in effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(50, 50, 50, 0.4);
-}
-
-/* Subtle gradient border for decoration */
-
-/* Add a subtle glow effect on hover */
-.character-blurb.show:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(68, 68, 68, 0.4);
-}
-
-/* Dark-themed scrolling for overflow */
-.character-blurb {
-    max-height: 400px; /* Limit height to prevent overflow */
-    overflow-y: auto; /* Enable vertical scrolling */
-    scrollbar-width: thin; /* Slim scrollbar */
-    scrollbar-color: #444 #1a1a1a; /* Dark scrollbar colors */
-}
-
-/* WebKit browsers scrollbar styling */
-.character-blurb::-webkit-scrollbar {
-    width: 8px;
-}
-
-.character-blurb::-webkit-scrollbar-track {
-    background: #1a1a1a; /* Match the dark background */
-}
-
-.character-blurb::-webkit-scrollbar-thumb {
-    background: #444; /* Dark gray for scrollbar thumb */
-    border-radius: 4px; /* Rounded scrollbar thumb */
-}
-
-/* Remove gradient text for a darker aesthetic */
-.character-blurb p {
-    background: none; /* No gradient effect */
-    color: #e0e0e0; /* Consistent light gray text */
-}
-
-/* Optional subtle glow effect on text when hovered */
-.character-blurb p:hover {
-    color: #fff; /* Slightly brighten text on hover */
-    transition: color 0.2s ease-in-out;
-}
 
 
 
