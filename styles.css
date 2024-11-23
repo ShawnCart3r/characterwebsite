@@ -1,4 +1,4 @@
-/* Reset Styles */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -10,9 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Black background for contrast */
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
+    background-color: #000; /* Optional black background */
 }
 
 /* Navbar Styles */
@@ -47,46 +45,62 @@ nav ul li a:hover {
     color: #f39c12;
 }
 
-/* General Layout Styles */
+/* Main Page Sections */
 .container {
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background: #000;
+    background: #000; /* Pure black background */
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
 }
 
-/* Rectangle Styles */
+/* Rectangle Section Styles */
 .rectangle {
-    flex: 1;
     display: flex;
-    justify-content: center;
+    flex: 1; /* Equal space for rectangles */
+    width: 100%;
     align-items: center;
-    background: #111;
+    justify-content: center;
+    background: #111; /* Dark gray for contrast */
     color: #fff;
     font-size: 2rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.rectangle:nth-child(odd) {
+    background: #111; /* Uniform dark background */
 }
 
 .rectangle:nth-child(even) {
-    background: #222;
+    background: #222; /* Slightly lighter for variation */
 }
 
 .rectangle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    transform: scale(1.05); /* Slight scaling effect */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1); /* Subtle glow */
 }
 
 .divider {
-    width: 2px;
-    background-color: #333;
-    opacity: 0.8;
-    transition: background-color 0.3s;
+    width: 2px; /* Vertical divider width */
+    background-color: #333; /* Darker gray divider */
+    opacity: 0.8; /* Slightly transparent */
+    transition: background-color 0.3s ease; /* Smooth color change */
 }
 
 .divider:hover {
-    background-color: #fff;
+    background-color: #fff; /* Highlight on hover */
+}
+
+/* Left-side Column */
+.left-side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
 }
 
 /* Card Layout Styles */
@@ -103,24 +117,29 @@ nav ul li a:hover {
 .card-wrapper {
     text-align: center;
     width: 300px;
+    max-width: 100%;
 }
 
 .card {
     position: relative;
-    perspective: 1200px;
+    perspective: 1200px; /* Enhance 3D effect */
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #1a1a1a, #333);
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1); /* Default size */
+    background: linear-gradient(135deg, #1a1a1a, #333333); /* Dark gradient */
     border: 4px solid transparent;
     border-image-slice: 1;
     border-image-source: linear-gradient(to right, #222, #444);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
+    background-size: 200% 200%;
+    animation: light-move 5s infinite ease-in-out;
 }
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 6px 6px rgba(0, 0, 0, 0.4);
     border-image-source: linear-gradient(to right, #444, #555);
+    animation: wiggle 0.5s ease-in-out;
 }
 
 .card-inner {
@@ -128,11 +147,12 @@ nav ul li a:hover {
     width: 100%;
     padding-top: 150%;
     transform-style: preserve-3d;
-    transition: transform 0.6s;
+    transition: transform 0.6s ease-in-out;
 }
 
 .card:hover .card-inner {
     transform: rotateY(180deg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .card-front,
@@ -144,15 +164,8 @@ nav ul li a:hover {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.card-front {
-    background: linear-gradient(135deg, #1a1a1a, #333);
 }
 
 .card-front img {
@@ -165,10 +178,16 @@ nav ul li a:hover {
 .card-back {
     transform: rotateY(180deg);
     background: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(50, 50, 50, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
     color: #ddd;
     font-size: 1.2rem;
-    padding: 10px;
-    backdrop-filter: blur(10px);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Character Title Styling */
@@ -177,50 +196,73 @@ nav ul li a:hover {
     font-weight: bold;
     color: #00bcd4;
     text-transform: uppercase;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1.5px;
     cursor: pointer;
     margin: 10px 0;
-    transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, background 0.5s ease;
 }
 
 .character-title:hover {
-    transform: scale(1.2);
     color: #ffffff;
+    transform: scale(1.2) rotate(-2deg);
     text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
 }
 
-/* Character Blurb Styling */
-.character-blurb {
-    display: none;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.3s, transform 0.3s;
-    font-size: 14px;
-    color: #d6d6d6;
-    background: radial-gradient(circle at center, #1a1a1a, #0d0d0d 85%);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+/* Animations */
+@keyframes light-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-.character-blurb.show {
-    display: block;
-    opacity: 1;
-    transform: scale(1);
+@keyframes wiggle {
+    0% {
+        transform: scale(1) rotate(0);
+    }
+    25% {
+        transform: scale(1.03) rotate(1deg);
+    }
+    50% {
+        transform: scale(1.05) rotate(-1deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+    }
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
     nav ul li a {
-        font-size: 14px;
+        font-size: 16px;
     }
+}
 
+@media (max-width: 1024px) {
     .rectangle {
+        flex-direction: column;
         height: auto;
     }
 
-    .card-wrapper {
+    .divider {
         width: 100%;
+        height: 2px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul li a {
+        font-size: 14px;
     }
 }
 
