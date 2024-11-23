@@ -1,73 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Full-Screen Divided Rectangles</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="https://warsagas.netlify.app/nightmaric-war">Nightmaric War</a></li>
-                <li><a href="https://warsagas.netlify.app/shadow-war">Shadow War</a></li>
-                <li><a href="https://warsagas.netlify.app/multiverse-war">Multiverse war</a></li>
-        </ul>
-    </nav>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Full-Screen Divided Rectangles</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <nav>
-            <button class="toggle-btn">🌙</button>
-            <ul>
-                <li><a href="https://warsagas.netlify.app/nightmaric-war">Nightmaric War</a></li>
-                <li><a href="https://warsagas.netlify.app/shadow-war">Shadow War</a></li>
-                <li><a href="https://warsagas.netlify.app/multiverse-war">Multiverse war</a></li>
-            </ul>
-        </nav>
-        <div class="container">
-            <div class="rectangle">
-                <div class="image-container">
-                    <a href="Federation.html"><img src="/image/cassandra.webp" alt="Placeholder 1A"></a>
-                </div>
-                <div class="divider"></div>
-                <div class="image-container">
-                    <a href="nightmares.html"><img src="/image/Persephone.webp" alt="Placeholder 1B"></a>
-                </div>
-            </div>
-    
-            <div class="rectangle">
-                <div class="image-container">
-                    <a href="alliance.html"><img src="/image/theresa.webp" alt="Placeholder 2A"></a>
-                </div>
-                <div class="divider"></div>
-                <div class="image-container">
-                    <a href="progress.html"><img src="/image/Darkness shadow war.webp" alt="Placeholder 2B"></a>
-                </div>
-            </div>
-            <div class="rectangle">
-                <div class="left-side">
-                    <div class="small-image-container">
-                        <a href="multiverse-alliance.html"><img src="image/Arcana2.webp" alt="Placeholder 3A Top"></a>
-                    </div>
-                    
-                </div>
-                <div class="divider"></div>
-                <div class="image-container">
-                    <a href="persephone.html"><img src="/image/Persephone3.webp" alt="Placeholder 3B"></a>
-                </div>
-            </div>
-        </div>
-        
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        <script src="main.js"></script>
-    </body>
-    </html>
-    
-</html>
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f39c12;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    background: #000;
+}
+
+/* Rectangles with Hover Effects */
+.rectangle {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    font-size: 2rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.rectangle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Divider */
+.divider {
+    width: 2px;
+    background-color: #333;
+    opacity: 0.8;
+    transition: background-color 0.3s;
+}
+
+.divider:hover {
+    background-color: #fff;
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    perspective: 1000px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-inner {
+    width: 100%;
+    padding-top: 150%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Front */
+.card-front {
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Back */
+.card-back {
+    transform: rotateY(180deg);
+    background: rgba(18, 18, 18, 0.9);
+    color: #ddd;
+}
+
+/* Character Title */
+.character-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00bcd4;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+
+.character-title:hover {
+    transform: scale(1.1);
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .rectangle {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .divider {
+        width: 100%;
+        height: 2px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .card {
+        width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-wrap: wrap;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+    }
+}
