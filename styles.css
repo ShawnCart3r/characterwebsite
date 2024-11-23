@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -10,10 +9,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Optional black background */
+    background-color: #000; /* Optional to emphasize images */
 }
 
-/* Navbar Styles */
+/* Navbar */
 nav {
     position: fixed;
     top: 0;
@@ -46,71 +45,92 @@ nav ul li a:hover {
 }
 
 /* Main Page Sections */
+/* Main container styles */
+/* Main container styles */
 .container {
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
     background: #000; /* Pure black background */
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
+    font-family: 'Roboto', sans-serif; /* Clean font */
+    color: #fff; /* White text for readability */
 }
 
-/* Rectangle Section Styles */
+/* Rectangle styles */
 .rectangle {
     display: flex;
     flex: 1; /* Equal space for rectangles */
     width: 100%;
     align-items: center;
     justify-content: center;
-    background: #111; /* Dark gray for contrast */
-    color: #fff;
-    font-size: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: #111; /* Dark gray for contrast against pure black */
+    color: #fff; /* White text */
+    font-size: 2rem; /* Font size for text inside rectangles */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Subtle text shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
 }
 
+/* Divider styles */
+.divider {
+    width: 2px; /* Divider width */
+    background-color: #333; /* Darker gray divider */
+    opacity: 0.8; /* Slightly transparent */
+    transition: background-color 0.3s ease; /* Smooth color change on hover */
+}
+
+/* Left-side column */
+.left-side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px; /* Space inside the column */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9); /* Subtle inner shadow */
+}
+
+/* Styling each rectangle */
 .rectangle:nth-child(odd) {
     background: #111; /* Uniform dark background */
 }
 
 .rectangle:nth-child(even) {
-    background: #222; /* Slightly lighter for variation */
+    background: #222; /* Slightly lighter for subtle variation */
 }
 
+/* Hover effects */
 .rectangle:hover {
     transform: scale(1.05); /* Slight scaling effect */
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1); /* Subtle glow */
 }
 
-.divider {
-    width: 2px; /* Vertical divider width */
-    background-color: #333; /* Darker gray divider */
-    opacity: 0.8; /* Slightly transparent */
-    transition: background-color 0.3s ease; /* Smooth color change */
-}
-
 .divider:hover {
-    background-color: #fff; /* Highlight on hover */
+    background-color: #fff; /* Turns white on hover for emphasis */
 }
 
-/* Left-side Column */
-.left-side {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 10px;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
+/* Optional: Add glowing edges for rectangles */
+.rectangle::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle glowing edges */
+    pointer-events: none;
+    transition: border-color 0.3s ease;
 }
 
-/* Card Layout Styles */
+.rectangle:hover::after {
+    border-color: rgba(255, 255, 255, 0.3); /* Brighter border on hover */
+}
+
+
+
+/* Card Layout */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    justify-content: space-evenly; /* Space items evenly */
+    align-items: flex-start; /* Align cards to the top */
     margin-top: 80px;
 }
 
@@ -129,16 +149,17 @@ nav ul li a:hover {
     background: linear-gradient(135deg, #1a1a1a, #333333); /* Dark gradient */
     border: 4px solid transparent;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, #222, #444);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-image-source: linear-gradient(to right, #222, #444); /* Subtle dark gradient for border */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Dark shadow */
     background-size: 200% 200%;
     animation: light-move 5s infinite ease-in-out;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 6px 6px rgba(0, 0, 0, 0.4);
-    border-image-source: linear-gradient(to right, #444, #555);
+    transform: scale(1.05); /* Slightly grow on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 6px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+    transition: transform 0.3s ease-in-out;
+    border-image-source: linear-gradient(to right, #444, #555); /* Slightly brighter border on hover */
     animation: wiggle 0.5s ease-in-out;
 }
 
@@ -152,7 +173,7 @@ nav ul li a:hover {
 
 .card:hover .card-inner {
     transform: rotateY(180deg);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Glow effect on flip */
 }
 
 .card-front,
@@ -163,11 +184,27 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px; /* Slightly rounder corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
     overflow: hidden;
 }
 
+/* Gradient Overlay for Card Front */
+.card-front::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    z-index: 1; /* Place above the image */
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0; /* Start hidden */
+}
+
+.card:hover .card-front::before {
+    opacity: 1; /* Show gradient overlay on hover */
+}
+
+/* Image Inside Card Front */
 .card-front img {
     width: 100%;
     height: 100%;
@@ -175,41 +212,47 @@ nav ul li a:hover {
     border-radius: 15px;
 }
 
+/* Card Back */
 .card-back {
     transform: rotateY(180deg);
-    background: rgba(18, 18, 18, 0.9);
+    background: rgba(18, 18, 18, 0.9); /* Very dark gray with transparency */
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(50, 50, 50, 0.7);
+    border: 1px solid rgba(50, 50, 50, 0.7); /* Subtle inner border */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px;
-    color: #ddd;
+    padding: 10px; /* Add slight padding for better text alignment */
+    color: #ddd; /* Light gray text */
+    font-family: 'Arial', sans-serif;
     font-size: 1.2rem;
+    letter-spacing: 0.5px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Character Title Styling */
-.character-title {
-    font-size: clamp(16px, 4vw, 24px);
-    font-weight: bold;
-    color: #00bcd4;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+/* Image Inside Card Back */
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image scales proportionally */
+    border-radius: 15px; /* Match the card's rounded corners */
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+    animation: particle-fade 3s infinite ease-in-out;
+}
+
+/* Hover Sound Effects */
+.card:hover {
     cursor: pointer;
-    margin: 10px 0;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, background 0.5s ease;
 }
 
-.character-title:hover {
-    color: #ffffff;
-    transform: scale(1.2) rotate(-2deg);
-    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
-}
-
-/* Animations */
+/* Keyframes */
 @keyframes light-move {
     0% {
         background-position: 0% 50%;
@@ -219,6 +262,15 @@ nav ul li a:hover {
     }
     100% {
         background-position: 0% 50%;
+    }
+}
+
+@keyframes particle-fade {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.2;
     }
 }
 
@@ -236,6 +288,412 @@ nav ul li a:hover {
         transform: scale(1) rotate(0);
     }
 }
+
+
+/* Character Details */
+/* Character Title Styling */
+/* Character Title Styling */
+/* Character Title Styling */
+.character-title {
+    font-size: clamp(16px, 4vw, 24px);
+    font-weight: bold;
+    color: #00bcd4; /* Cyan blue for contrast */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Strong shadow */
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, background 0.5s ease;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background: linear-gradient(90deg, #00bcd4, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.character-title:hover {
+    color: #ffffff;
+    transform: scale(1.2) rotate(-2deg);
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(90deg, #03a9f4, #00bcd4, #29b6f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.character-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #03a9f4;
+    transition: width 0.4s ease;
+}
+
+.character-title:hover::after {
+    width: 100%;
+}
+
+/* Ripple Effect */
+.character-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(3, 169, 244, 0.15);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.character-title:hover::before {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+}
+
+/* Shimmer Animation */
+.character-title.shimmer {
+    background: linear-gradient(90deg, #00bcd4, #03a9f4, #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200%; }
+    100% { background-position: 200%; }
+}
+
+/* Card Text Styling */
+.card-text {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ddd; /* Light gray text */
+    background: linear-gradient(135deg, rgba(33, 33, 33, 0.8), rgba(50, 50, 50, 1));
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.5s ease;
+}
+
+.card-text:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+    transform: translateY(-10px) scale(1.05);
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(77, 77, 77, 1));
+}
+
+/* Rotating Background Effect */
+.card-text::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+    transform: rotate(0deg);
+    animation: rotateBackground 12s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotateBackground {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 3D Flip Effect */
+.card-text-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-out;
+    position: relative;
+}
+
+.card-text:hover .card-text-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(33, 33, 33, 1));
+}
+
+
+/* Character Title Styling */
+.character-title {
+    font-size: clamp(16px, 4vw, 24px);
+    font-weight: bold;
+    color: #d1e3ff; /* Cool light blue for contrast */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9); /* Strong shadow for depth */
+    background: linear-gradient(90deg, #5078ff, #3249b6); /* Gradient with vibrant blues */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.5s ease, background 0.5s ease;
+}
+
+.character-title:hover {
+    transform: scale(1.1) rotate(-1deg);
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1); /* Enhanced shadow */
+    background: linear-gradient(90deg, #87a8ff, #6070ff); /* Brightened gradient on hover */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Underline Effect */
+.character-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #3249b6; /* Blue accent underline */
+    transition: width 0.4s ease;
+}
+
+.character-title:hover::after {
+    width: 100%;
+}
+
+/* Ripple Effect */
+.character-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(50, 100, 255, 0.3); /* Soft blue ripple */
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.character-title:hover::before {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+}
+
+/* Card Text Styling */
+.card-text {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e0e0e0; /* Off-white for readability */
+    background: linear-gradient(135deg, rgba(40, 40, 70, 0.9), rgba(20, 20, 50, 1)); /* Deep blue gradient */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.5s ease;
+}
+
+.card-text:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+    transform: translateY(-10px) scale(1.05);
+    background: linear-gradient(135deg, rgba(60, 60, 120, 1), rgba(30, 30, 90, 1)); /* Slightly brighter hover gradient */
+}
+
+/* Rotating Background Effect */
+.card-text::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(70, 70, 120, 0.4), rgba(30, 30, 60, 0.8)); /* Subtle blue hue */
+    transform: rotate(0deg);
+    animation: rotateBackground 10s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotateBackground {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Particle Effect */
+.card-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(80, 120, 255, 0.3), rgba(0, 0, 0, 0));
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatParticles 6s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes floatParticles {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+}
+
+
+
+/* JavaScript Required for Custom Cursor */
+
+.character-blurb {
+    display: none;
+    opacity: 0;
+    transform: scale(0.95); /* Subtle shrink effect for pop-in animation */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-size: 14px; /* Smaller base font size */
+    line-height: 1.1; /* Ultra-tight line spacing */
+    color: #d6d6d6;
+    text-align: justify; /* Align text for clean edges */
+    margin: 0; /* No external margins */
+    padding: 10px; /* Minimal internal padding */
+    background: radial-gradient(circle at center, #1a1a1a, #0d0d0d 85%);
+    border-radius: 10px; /* Subtle rounding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 0 8px rgba(50, 50, 50, 0.3);
+    font-family: 'Open Sans', Arial, sans-serif;
+    backdrop-filter: blur(6px); /* Frosted glass effect */
+    max-height: 400px; /* Limit container height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: #4caf50 #1a1a1a;
+}
+
+.character-blurb h2 {
+    margin: 0; /* No external margins */
+    padding: 4px 0; /* Minimal vertical padding */
+    font-size: 16px; /* Compact heading size */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Slightly tight character spacing */
+    background: linear-gradient(90deg, #76ff03, #00e676, #1de9b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid #76ff03; /* Thin separator */
+    display: inline-block;
+    text-shadow: 0 1px 2px rgba(0, 255, 128, 0.6); /* Subtle shadow */
+}
+
+.character-blurb p {
+    margin: 0; /* Completely eliminate vertical gaps */
+    padding: 3px 0; /* Tight, balanced padding */
+    text-align: justify; /* Justified alignment */
+    line-height: 1.1; /* Ultra-tight line spacing */
+    color: #e0e0e0;
+    font-size: 14px; /* Compact text size */
+    letter-spacing: 0.2px; /* Slightly tighter spacing */
+    background: rgba(0, 0, 0, 0.2); /* Subtle translucent background */
+    border-left: 2px solid #76ff03; /* Thin decorative border */
+    border-radius: 3px; /* Slight rounding */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle inner depth */
+}
+
+.character-blurb p + p {
+    margin-top: 1px; /* Minimal gap between consecutive paragraphs */
+}
+
+.character-blurb p:last-child {
+    margin-bottom: 0; /* Prevent trailing gaps */
+}
+
+.character-blurb p:hover {
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker background on hover */
+    color: #ffffff; /* Brightened text on hover */
+}
+
+.character-blurb a {
+    color: #76ff03;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.character-blurb a:hover {
+    color: #00e676;
+}
+
+.character-blurb.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1); /* Fully expanded */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 255, 128, 0.5);
+}
+
+/* Scrollbar Customization */
+.character-blurb::-webkit-scrollbar {
+    width: 6px; /* Slim scrollbar */
+}
+
+.character-blurb::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.character-blurb::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #76ff03, #00e676);
+    border-radius: 3px;
+}
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .character-blurb {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+
+    .character-blurb h2 {
+        font-size: 22px;
+    }
+}
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 1440px) {
@@ -258,11 +716,21 @@ nav ul li a:hover {
     nav ul li a {
         font-size: 15px;
     }
+
+    /* Image-related code - unchanged */
+    .image-container {
+        height: 400px;
+    }
 }
 
 @media (max-width: 768px) {
     nav ul li a {
         font-size: 14px;
+    }
+
+    /* Image-related code - unchanged */
+    .image-container {
+        height: 300px;
     }
 }
 
@@ -278,4 +746,90 @@ nav ul li a:hover {
     .rectangle {
         height: auto;
     }
+
+    /* Image-related code - unchanged */
+    .small-image-container {
+        height: 150px;
+    }
 }
+
+/* Image-Related Styles - Unchanged */
+.image-container {
+    flex: 1; /* Each image takes equal space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures images don't overflow */
+    position: relative; /* For hover effects */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+}
+
+.image-container:hover {
+    transform: scale(1.1); /* Makes the image pop */
+    filter: brightness(1.2); /* Adds a glossy effect */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images cover their container without stretching */
+    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.image-container:hover img {
+    opacity: 0.9; /* Slightly reduces opacity for the glossy effect */
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Glossy overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Ensures the overlay doesn't interfere with clicks */
+}
+
+.image-container:hover::after {
+    opacity: 1; /* Makes the overlay visible on hover */
+}
+
+.small-image-container {
+    flex: 1; /* Equal height in the left-side column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents overflow */
+    position: relative; /* For hover effects */
+}
+
+.small-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.small-image-container:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.small-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.small-image-container:hover::after {
+    opacity: 1;} rebuild it
