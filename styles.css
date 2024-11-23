@@ -13,8 +13,8 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Navbar */
-main {
+/* Main Content */
+mmain {
     padding: 100px 20px;
     min-height: 200vh; /* Extend page for scroll demo */
 }
